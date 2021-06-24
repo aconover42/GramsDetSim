@@ -1,6 +1,6 @@
-//Function
 #include <cmath>       /* log */
 #include <iostream>
+#include <fstream>    /* read in data */
 
 float recombination (float E, float F, float rho)
 //Takes input of change in ionized energy (E), electric field (F), and argon density (rho)
@@ -17,10 +17,18 @@ float recombination (float E, float F, float rho)
 }
 
 int main ()
-//a quick program to test our calculation
+//This is the main GramsDetSim
 {
   float z;
   z = recombination (1, 1, 1);
   std::cout << "The result is " << z;
+
+//This version of the program will require the user to externally save and prepare the output from Grams G4 Sim. Future versions will imbed this functionality.
+//Grams G4 Sim ntuple output must be saved as GramsG4Data.txt
+  std::ofstream data;
+  data.open ("GramsG4Data.txt");
+  std::cout << data;
+  data.close();
+  return data;
 }
 //END
