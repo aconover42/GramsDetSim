@@ -17,16 +17,12 @@ float recombination (float E, float F, float rho)
 }
 
 
-
-int main ()
 //Main GramsDetSim
-{
+int main () {
+  ifstream myfile;
+
 //This version of the program will require the user to externally save and prepare the output from Grams G4 Sim. Future versions will imbed this functionality.
 //Grams G4 Sim ntuple output must be saved as GramsG4Data.txt
-  std::ofstream data;
-  data.open ("GramsG4Data.txt");
-  std::cout << data;
-  data.close();
-  return data;
+
 }
 //END
