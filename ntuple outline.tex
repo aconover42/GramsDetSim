@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage[legalpaper, landscape, margin=.8in]{geometry}
+\pagenumbering{gobble}
+
+\begin{document}
+\section*{\centering ROOT ntuple Output Format}
+Event(Value): Event number\\
+\underline{GramsG4 Level} $\downarrow$ \\
+$E_\gamma$(Value): Gamma ray energy\\
+$x_\gamma$(Value): Initial x position of the gamma ray\\
+$y_\gamma$(Value): Initial y position of the gamma ray\\
+$z_\gamma$(Value): Initial z position of the gamma ray\\
+$t_\gamma$(Value): Initial time of the gamma ray\\
+$P_{x\gamma}$(Value): Initial x momentum of the gamma ray\\
+$P_{y\gamma}$(Value): Initial y momentum of the gamma ray\\
+$P_{z\gamma}$(Value): Initial z momentum of the gamma ray\\
+\begin{tabular}{|l|l|l|l|l}
+    \underline{Compton scatter} & \underline {Absorption} & \underline{Pair production} & \underline{Bremsstrahlung} & \\
+    $[Pcomp_{1},...,Pcomp_{n}]$ & $[Pabs_{1},...,Pabs_{n}]$ & $[Pppr_{1},...,Pppr_{n}]$ & $[Pbr_{1},...,Pbr_{n}]$ & (List): Primary process quantity\\
+    $[Ecomp_{1},...,Ecomp_{n}]$ & $[Eabs_{1},...,Eabs_{n}]$ & $[Eppr_{1},...,Eppr_{n}]$ & $[Ebr_{1},...,Ebr_{n}]$ & (List): Initial energy of the nth process\\
+    $[xcomp_{1},...,xcomp_{n}]$ & $[xabs_{1},...,xabs_{n}]$ & $[xppr_{1},...,xppr_{n}]$ & $[xbr_{1},...,xbr_{n}]$ & (List): Initial x position of the nth process\\
+    $[ycomp_{1},...,ycomp_{n}]$ & $[yabs_{1},...,yabs_{n}]$ & $[yppr_{1},...,yppr_{n}]$ & $[ybr_{1},...,ybr_{n}]$ & (List): Initial y position of the nth process\\
+    $[zcomp_{1},...,zcomp_{n}]$ & $[zabs_{1},...,zabs_{n}]$ & $[zppr_{1},...,zppr_{n}]$ & $[zbr_{1},...,zbr_{n}]$ & (List): Initial z position of the nth process\\
+    $[tcomp_{1},...,tcomp_{n}]$ & $[tabs_{1},...,tabs_{n}]$ & $[tppr_{1},...,tppr_{n}]$ & $[tbr_{1},...,tbr_{n}]$ & (List): Initial time of the nth process\\
+    $[E_{ion_1}...E_{ion_n}]$ & $[E_{ion_1}...E_{ion_n}]$ & $[E_{ion_1}...E_{ion_n}]$ & $[E_{ion_1}...E_{ion_n}]$ & (List of Arrays): Energy emitted due to ionization during each step in the nth process\\
+    $[E_{light_1}...E_{light_n}]$ & $[E_{light_1}...E_{light_n}]$ & $[E_{light_1}...E_{light_n}]$ &  $[E_{light_1}...E_{light_n}]$ & (List of Arrays): Energy emitted as photons during each step in the nth process\\
+    $[TrackID_{1}...TrackID_{n}]$ & $[TrackID_{1}...TrackID_{n}]$ & $[TrackID_{1}...TrackID_{n}]$ & $[TrackID_{1}...TrackID_{n}]$ & (List of Arrays): Track ID during each step in the nth process\\
+    $[ParentID_{1}...ParentID_{n}]$ & $[ParentID_{1}...ParentID_{n}]$ & $[ParentID_{1}...ParentID_{n}]$ & $[ParentID_{1}...ParentID_{n}]$ & (List of Arrays): Parent ID during each step in the nth process\\
+\end{tabular}\\
+\underline{GramsDetSim Level} $\downarrow$\\
+\begin{tabular}{|l|l|l|l}
+    \underline{Compton} & \underline {Absorption} & \underline{Pair production} & \\
+    $[comp]$ & $[abs]$ & $[ppr]$ & (List): Number of process instances\\
+    $[E_{1}...E_{m}]$ & $[E_{1}...E_{m}]$ & $[E_{1}...E_{m}]$ & (List): Ionization energy detected by sensors per mth sensor index\\
+    $[tDi_{1}...tDi_{m}]$ & $[tDi_{1}...tDi_{m}]$ & $[tDi_{1}...tDi_{m}]$ & (List): Process drift time at initial sensor hits per mth sensor index\\
+    $[tDf_{1}...tDf_{m}]$ & $[tDf_{1}...tDf_{m}]$ & $[tDf_{1}...tDf_{m}]$ & (List): Process drift time at final sensor hits per mth sensor index\\
+    $[xDi_{1}...xDi_{m}]$ & $[xDi_{1}...xDi_{m}]$ & $[xDi_{1}...xDi_{m}]$ & (List): Process x drift at initial sensor hits per mth sensor index\\
+    $[xDf_{1}...xDf_{m}]$ & $[xDf_{1}...xDf_{m}]$ & $[xDf_{1}...xDf_{m}]$ & (List): Process x drift at final sensor hits per mth sensor index\\
+    $[yDi_{1}...yDi_{m}]$ & $[yDi_{1}...yDi_{m}]$ & $[yDi_{1}...yDi_{m}]$ & (List): Process y drift at initial sensor hits per mth sensor index\\
+    $[yDf_{1}...yDf_{m}]$ & $[yDf_{1}...yDf_{m}]$ & $[yDf_{1}...yDf_{m}]$ & (List): Process y drift at final sensor hits per mth sensor index\\
+    $[S_{1}...S_{i}]$ & $[S_{1}...S_{i}]$ & $[S_{1}...S_{i}]$ & (List of Arrays): Scintillation light detected by sensors per ith sensor index(See notes)*\\
+    $[O_{1}...O_{k}]$ & $[O_{1}...O_{k}]$ & $[O_{1}...O_{k}]$ & (To be determined): Other energy detected by sensors per kth sensor index
+\end{tabular}
+
+\noindent
+Notes:\\
+All $x,y,z$ values are given in detector coordinate system\\
+Group all subsequent bremsstrahlung processes which lead to energy deposits in detector into $[E_{ion_1}...E_{ion_n}]$\\
+$*$ The top of the cells are  mapped by a $1mm \times 1mm$ grid consisting of tiles. The dimensions of the tiles are subject to change depending on the size and geometry of the sensors used. The axes are referred to as $L$ (Length of detector) and $W$ (Width of detector). Each index contains a list of arrays containing the $L,H,t, t$ variables of each group of photons reaching the tile. Photon group size TBD.
+
+\end{document}
