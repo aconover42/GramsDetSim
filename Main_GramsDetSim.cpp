@@ -16,13 +16,11 @@ float recombination (float E, float F, float rho)
   return total;
 }
 
-int main ()
-//This is the main GramsDetSim
-{
-  float z;
-  z = recombination (1, 1, 1);
-  std::cout << "The result is " << z;
 
+
+int main ()
+//Main GramsDetSim
+{
 //This version of the program will require the user to externally save and prepare the output from Grams G4 Sim. Future versions will imbed this functionality.
 //Grams G4 Sim ntuple output must be saved as GramsG4Data.txt
   std::ofstream data;
