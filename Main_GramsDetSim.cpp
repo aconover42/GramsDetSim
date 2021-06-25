@@ -6,6 +6,9 @@
 #include <iomanip>
 #include <sstream>
 
+typedef std::vector<Double_t> vector_t; // vector of doubles
+typedef std::vector<vector_t> nested_t; // vector of vectors of doubles
+
 float recombination (float E, float F, float rho)
 //Takes input of change in ionized energy (E), electric field (F), and argon density (rho)
 {
@@ -32,18 +35,23 @@ int main () {
 
   while(getline(testFile, line)){
 //Declare all variables as their types. In its current format all columns are declared as floats. This will change. 
-      float Line;
-      float pri_E;
-      float pri_xPos;
-      float pri_yPos;
-      float pri_zPos;
-      float pri_t;
-      float pri_px;
-      float pri_py;
-      float pri_pz;
-      float compt_p;
-      float compt_E;
-      float compt_xPos;
+      
+// Edit LR 6/25/2021 changed from float to Int_t ("flexible" integer), Double_t ("flexible" double), vector_t and nested_t (see top)
+
+      Int_t Line; // LR 6/25/2021 changing this to Int_t from float will save a(n albeit miniscule) amount of space (int = 2 bytes, float =4)
+      Double_t pri_E;
+      Double_t pri_xPos; // LR 6/25/2021 these might end up being G4ThreeVectors... planning on asking Bill Tues.
+      Double_t pri_yPos;
+      Double_t pri_zPos;
+      Double_t pri_t;
+      Double_t pri_px;
+      Double_t pri_py;
+      Double_t pri_pz;
+      Int_t compt_p;
+      vector_t compt_E;
+      vector_t compt_xPos;
+
+      // LR 6/25/2021 I would recommed for the rest of these: list = vector_t, list of arrays = nested_t, everything else either Int_t or Double_t
 
 //Not entirely sure what the next lines do but something along the lines of splitting each line by asterisks, the assigning them to ss
       std::replace(line.begin(), line.end(), '*', ' ');
