@@ -31,49 +31,52 @@ int main () {
   std::string line;
 
   while(getline(testFile, line)){
+//Declare all variables as their types. In its current format all columns are declared as floats. This will change. 
+      float Line;
+      float pri_E;
+      float pri_xPos;
+      float pri_yPos;
+      float pri_zPos;
+      float pri_t;
+      float pri_px;
+      float pri_py;
+      float pri_pz;
+      float compt_p;
+      float compt_E;
+      float compt_xPos;
 
-      float posa;
-      float posb;
-      float posc;
-      float posd;
-      float pose;
-      float posf;
-      float posg;
-      float posh;
-      float posi;
-      float posj;
-      float posk;
-      float posl;
-
+//Not entirely sure what the next lines do but something along the lines of splitting each line by asterisks, the assigning them to ss
       std::replace(line.begin(), line.end(), '*', ' ');
 
       std::stringstream ss(line);
 
-      ss >> posa;
-      ss >> posb;
-      ss >> posc;
-      ss >> posd;
-      ss >> pose;
-      ss >> posf;
-      ss >> posg;
-      ss >> posh;
-      ss >> posi;
-      ss >> posj;
-      ss >> posk;
-      ss >> posl;
+      ss >> Line;
+      ss >> pri_E;
+      ss >> pri_xPos;
+      ss >> pri_yPos;
+      ss >> pri_zPos;
+      ss >> pri_t;
+      ss >> pri_px;
+      ss >> pri_py;
+      ss >> pri_pz;
+      ss >> compt_p;
+      ss >> compt_E;
+      ss >> compt_xPos;
 
-      std::cout << "posa: "  << posa << " ";
-      std::cout << "posb: "  << posb << " ";
-      std::cout << "posc: "  << posc << " ";
-      std::cout << "posd: "  << posd << " ";
-      std::cout << "pose: "  << pose << " ";
-      std::cout << "posf: "  << posf << " ";
-      std::cout << "posg: "  << posg << " ";
-      std::cout << "posh: "  << posh << " ";
-      std::cout << "posi: "  << posi << " ";
-      std::cout << "posj: "  << posj << " ";
-      std::cout << "posk: "  << posk << " ";
-      std::cout << "posl: "  << posl << " ";
+//Prints out each position with a label. This will change in the future and take each variable rut it through the corresponding function. 
+//Bug: This works up until compt_E. But compt_E is a list and this program cannot recognize that.
+      std::cout << "Line: "      << Line << " ";
+      std::cout << "pri_E: "     << pri_E << " ";
+      std::cout << "pri_xPos: "  << pri_xPos << " ";
+      std::cout << "pri_yPos: "  << pri_yPos << " ";
+      std::cout << "pri_zPos: "  << pri_zPos << " ";
+      std::cout << "pri_t: "     << pri_t << " ";
+      std::cout << "pri_px: "    << pri_px << " ";
+      std::cout << "pri_py: "    << pri_py << " ";
+      std::cout << "pri_pz: "    << pri_pz << " ";
+      std::cout << "compt_p: "   << compt_p << " ";
+      std::cout << "compt_E: "   << compt_E << " ";
+      std::cout << "compt_xPos: " << compt_xPos << " ";
 
       std::cout << '\n';
   }   
