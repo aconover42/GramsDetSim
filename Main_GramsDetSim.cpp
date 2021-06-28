@@ -69,8 +69,12 @@ int main () {
       ss >> pri_py;
       ss >> pri_pz;
       ss >> compt_p;
-      ss >> compt_E;
-      ss >> compt_xPos;
+      //ss >> compt_E;
+      //ss >> compt_xPos;
+
+      compt_E.push_back(ss);
+      compt_xPos.push_back(ss);
+
 
 //Prints out each position with a label. This will change in the future and take each variable rut it through the corresponding function. 
 //Bug: This works up until compt_E. But compt_E is a list and this program cannot recognize that.
@@ -86,6 +90,9 @@ int main () {
       std::cout << "compt_p: "     << compt_p << " ";
       std::cout << "compt_E: "     << compt_E << " ";
       std::cout << "compt_xPos: "  << compt_xPos << " ";
+
+      std::compt_E.clear();
+      std::compt_xPos.clear();
 
       std::cout << '\n';
   }   
