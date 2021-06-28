@@ -5,8 +5,9 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
+#include <vector>
 
-typedef std::vector<Double_t> vector_t; // vector of doubles
+typedef std::vector<double_t> vector_t; // vector of doubles
 typedef std::vector<vector_t> nested_t; // vector of vectors of doubles
 
 float recombination (float E, float F, float rho)
@@ -36,22 +37,22 @@ int main () {
   while(getline(testFile, line)){
 //Declare all variables as their types. In its current format all columns are declared as floats. This will change. 
       
-// Edit LR 6/25/2021 changed from float to Int_t ("flexible" integer), Double_t ("flexible" double), vector_t and nested_t (see top)
+// Edit LR 6/25/2021 changed from float to float_t ("flexible" integer), double_t ("flexible" double), vector_t and nested_t (see top)
 
-      Int_t Line; // LR 6/25/2021 changing this to Int_t from float will save a(n albeit miniscule) amount of space (int = 2 bytes, float =4)
-      Double_t pri_E;
-      Double_t pri_xPos; // LR 6/25/2021 these might end up being G4ThreeVectors... planning on asking Bill Tues.
-      Double_t pri_yPos;
-      Double_t pri_zPos;
-      Double_t pri_t;
-      Double_t pri_px;
-      Double_t pri_py;
-      Double_t pri_pz;
-      Int_t compt_p;
+      float_t Line; // LR 6/25/2021 changing this to float_t from float will save a(n albeit miniscule) amount of space (int = 2 bytes, float =4)
+      double_t pri_E;
+      double_t pri_xPos; // LR 6/25/2021 these might end up being G4ThreeVectors... planning on asking Bill Tues.
+      double_t pri_yPos;
+      double_t pri_zPos;
+      double_t pri_t;
+      double_t pri_px;
+      double_t pri_py;
+      double_t pri_pz;
+      float_t compt_p;
       vector_t compt_E;
       vector_t compt_xPos;
 
-      // LR 6/25/2021 I would recommed for the rest of these: list = vector_t, list of arrays = nested_t, everything else either Int_t or Double_t
+      // LR 6/25/2021 I would recommed for the rest of these: list = vector_t, list of arrays = nested_t, everything else either float_t or double_t
 
 //Not entirely sure what the next lines do but something along the lines of splitting each line by asterisks, the assigning them to ss
       std::replace(line.begin(), line.end(), '*', ' ');
@@ -73,18 +74,18 @@ int main () {
 
 //Prints out each position with a label. This will change in the future and take each variable rut it through the corresponding function. 
 //Bug: This works up until compt_E. But compt_E is a list and this program cannot recognize that.
-      std::cout << "Line: "      << Line << " ";
-      std::cout << "pri_E: "     << pri_E << " ";
-      std::cout << "pri_xPos: "  << pri_xPos << " ";
-      std::cout << "pri_yPos: "  << pri_yPos << " ";
-      std::cout << "pri_zPos: "  << pri_zPos << " ";
-      std::cout << "pri_t: "     << pri_t << " ";
-      std::cout << "pri_px: "    << pri_px << " ";
-      std::cout << "pri_py: "    << pri_py << " ";
-      std::cout << "pri_pz: "    << pri_pz << " ";
-      std::cout << "compt_p: "   << compt_p << " ";
-      std::cout << "compt_E: "   << compt_E << " ";
-      std::cout << "compt_xPos: " << compt_xPos << " ";
+      std::cout << "Line: "        << Line << " ";
+      std::cout << "pri_E: "       << pri_E << " ";
+      std::cout << "pri_xPos: "    << pri_xPos << " ";
+      std::cout << "pri_yPos: "    << pri_yPos << " ";
+      std::cout << "pri_zPos: "    << pri_zPos << " ";
+      std::cout << "pri_t: "       << pri_t << " ";
+      std::cout << "pri_px: "      << pri_px << " ";
+      std::cout << "pri_py: "      << pri_py << " ";
+      std::cout << "pri_pz: "      << pri_pz << " ";
+      std::cout << "compt_p: "     << compt_p << " ";
+      std::cout << "compt_E: "     << compt_E << " ";
+      std::cout << "compt_xPos: "  << compt_xPos << " ";
 
       std::cout << '\n';
   }   
